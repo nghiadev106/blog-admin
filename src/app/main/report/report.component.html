@@ -1,0 +1,55 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="page-title-box">
+      <div class="row align-items-center">
+        <div class="col-sm-6">
+          <h4 class="page-title">Khảo sát</h4>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-right">
+            <li class="breadcrumb-item"><a [routerLink]="['/admin']">Home</a></li>
+            <li class="breadcrumb-item active">Khảo sát</li>
+          </ol>
+        </div>
+      </div> <!-- end row -->
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="card m-b-30">
+            <div class="card-body">
+              <div id="outside">
+                <form id="survey-form" action="" method="post">
+                  <p id="description"><b>Số người khảo sát:</b> {{this.count}}</p>
+                  <fieldset *ngFor="let question of questions; let i = index">
+                    <div *ngIf="question.QuestionTypeId==1">
+                      <label for="Gender">Câu {{i+1}}: {{question.Name}}</label>
+                      <p *ngFor="let answer of question.Answers_json">
+                        <input type="radio" name="{{answer.QuestionId}}" value="{{answer.Id}}">{{answer.Content}} -
+                        {{answer.Ratio}}%
+                      </p>
+                    </div>
+                    <div *ngIf="question.QuestionTypeId==2">
+                      <label for="Gender">Câu {{i+1}}: {{question.Name}}</label>
+                      <p *ngFor="let answer of question.Answers_json">
+                        <input type="checkbox" name="{{answer.QuestionId}}" value="{{answer.Id}}">{{answer.Content}} -
+                        {{answer.Ratio}}%
+                      </p>
+                    </div>
+                  </fieldset>
+                  <button routerLink="/admin/survey" pTooltip="Danh sách khảo sát" tooltipPosition="top"
+                    class="btn btn-success waves-effect waves-light mr-1">Quay lại</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end page-title -->
+  </div>
+  <!-- container-fluid -->
+</div>
+
+<ngx-spinner bdColor="rgba(51,51,51,0.8)">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<p-toast position="top-right"></p-toast>

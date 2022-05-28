@@ -1,0 +1,20 @@
+/* .video iframe{
+  width: 150px;
+    height: 100px;
+} */
+
+iframe{
+    width: 150px;
+    height: 100px;
+}
+
+.video {
+  width: 150px;
+    height: 100px;
+}
+
+
+.checkbox {
+  margin-bottom: 10px;
+  margin-right: 10px;
+}

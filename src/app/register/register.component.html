@@ -1,0 +1,99 @@
+<!-- Begin page -->
+<div class="accountbg"></div>
+<div class="wrapper-page">
+  <div class="card card-pages shadow-none">
+
+    <div class="card-body">
+      <form class="form-horizontal m-t-30" [formGroup]="formRegister" (ngSubmit)="onRegister()">
+
+        <div class="form-group">
+          <div class="col-12">
+            <label>Tài khoản</label>
+            <input class="form-control" type="text" name="Username" formControlName="Username" placeholder="Tài khoản">
+          </div>
+          <div class="col-12" style="color: red;"
+            *ngIf="formRegister.controls.Username?.errors?.required && formRegister.controls.Username?.touched">
+            Tài khoản không được để trống!
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-12">
+            <label>Email</label>
+            <input class="form-control" type="text" name="Email" formControlName="Email" placeholder="Email">
+          </div>
+          <div class="col-12" style="color: red;"
+            *ngIf="formRegister.controls.Email?.errors?.required && formRegister.controls.Email?.touched">
+            Email không được để trống!
+          </div>
+          <div class="col-12" style="color: red;" *ngIf="formRegister.controls['Email'].hasError('email')">
+            Email không đúng định dạng
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-12">
+            <label>Họ và tên</label>
+            <input class="form-control" type="text" name="FullName" formControlName="FullName" placeholder="Họ và tên">
+          </div>
+          <div class="col-12" style="color: red;"
+            *ngIf="formRegister.controls.FullName?.errors?.required && formRegister.controls.FullName?.touched">
+            Họ và tên không được để trống!
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-12">
+            <label>Mật khẩu</label>
+            <input class="form-control" type="password" name="Password" formControlName="Password"
+              placeholder="Mật khẩu">
+          </div>
+          <div class="col-12" style="color: red;"
+            *ngIf="formRegister.controls.Password?.errors?.required && formRegister.controls.Password?.touched">
+            Mật khẩu không được để trống!
+          </div>
+          <div class="col-12" style="color: red;" *ngIf="formRegister.controls['Password'].hasError('maxlength')">
+            Mật khẩu không được quá 50 ký tự!
+          </div>
+          <div class="col-12" style="color: red;" *ngIf="formRegister.controls['Password'].hasError('minlength')">
+            Mật khẩu ít nhất 6 ký tự!
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-12">
+            <label>Mật khẩu xác nhận</label>
+            <input class="form-control" type="password" name="ConfirmPassword" formControlName="ConfirmPassword"
+              placeholder="Mật khẩu">
+          </div>
+          <div class="col-12" style="color: red;"
+            *ngIf="formRegister.controls.ConfirmPassword?.errors?.required && formRegister.controls.ConfirmPassword?.touched">
+            Mật khẩu xác nhận không được để trống!
+          </div>
+          <div class="col-12" style="color: red;"
+            *ngIf="formRegister.controls['ConfirmPassword'].hasError('maxlength')">
+            Mật khẩu không được quá 50 ký tự!
+          </div>
+          <div class="col-12" style="color: red;"
+            *ngIf="formRegister.controls['ConfirmPassword'].hasError('minlength')">
+            Mật khẩu ít nhất 6 ký tự!
+          </div>
+        </div>
+        <div class="form-group text-center m-t-20">
+          <div class="col-12">
+            <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Đăng ký</button>
+          </div>
+        </div>
+        <div class="form-group row m-t-30 m-b-0">
+          <div class="col-sm-7">
+            <a routerLink="/login" class="text-muted"><i class="fa fa-lock m-r-5"></i> Bạn đã có tài khoản?</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- END wrapper -->
+<ngx-spinner bdColor="rgba(51,51,51,0.8)">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<p-toast position="top-right"></p-toast>

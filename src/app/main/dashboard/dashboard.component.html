@@ -1,0 +1,150 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="page-title-box">
+      <div class="row align-items-center">
+        <div class="col-sm-6">
+          <h4 class="page-title">Dashboard</h4>
+        </div>
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end page-title -->
+
+    <div class="row">
+
+      <div class="col-sm-6 col-xl-3">
+        <div class="card">
+          <div class="card-heading p-4">
+            <div class="mini-stat-icon float-right">
+              <i class="mdi mdi-cube-outline bg-primary  text-white"></i>
+            </div>
+            <div>
+              <h5 class="font-16">Bài viết</h5>
+            </div>
+            <h3 class="mt-4">{{model.blog}}</h3>
+            <p class="text-muted mt-2 mb-0"><a routerLink="/admin/blog">Chi tiết</a><span class="float-right"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-xl-3" *ngIf="authenService.RequireAdmin()">
+        <div class="card">
+          <div class="card-heading p-4">
+            <div class="mini-stat-icon float-right">
+              <i class="mdi mdi-briefcase-check bg-success text-white"></i>
+            </div>
+            <div>
+              <h5 class="font-16">Người dùng</h5>
+            </div>
+            <h3 class="mt-4">{{model.user}}</h3>
+            <p class="text-muted mt-2 mb-0"><a routerLink="/admin/user">Chi tiết</a><span class="float-right"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-xl-3">
+        <div class="card">
+          <div class="card-heading p-4">
+            <div class="mini-stat-icon float-right">
+              <i class="mdi mdi-tag-text-outline bg-warning text-white"></i>
+            </div>
+            <div>
+              <h5 class="font-16">Video</h5>
+            </div>
+            <h3 class="mt-4">{{model.video}}</h3>
+            <p class="text-muted mt-2 mb-0"><a routerLink="/admin/video">Chi tiết</a><span class="float-right"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-xl-3">
+        <div class="card">
+          <div class="card-heading p-4">
+            <div class="mini-stat-icon float-right">
+              <i class="mdi mdi-buffer bg-danger text-white"></i>
+            </div>
+            <div>
+              <h5 class="font-16">Chuyên mục</h5>
+            </div>
+            <h3 class="mt-4">{{model.blogCategory}}</h3>
+
+            <p class="text-muted mt-2 mb-0"><a routerLink="/admin/blog-category">Chi tiết</a><span
+                class="float-right"></span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-xl-3" *ngIf="authenService.RequireAdminOrCustomer()">
+        <div class="card">
+          <div class="card-heading p-4">
+            <div class="mini-stat-icon float-right">
+              <i class="mdi mdi-cube-outline bg-primary  text-white"></i>
+            </div>
+            <div>
+              <h5 class="font-16">Khảo sát</h5>
+            </div>
+            <h3 class="mt-4">{{model.survey}}</h3>
+
+            <p class="text-muted mt-2 mb-0"><a routerLink="/admin/survey">Chi tiết</a><span class="float-right"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-xl-3" *ngIf="authenService.RequireAdminOrCustomer()">
+        <div class="card">
+          <div class="card-heading p-4">
+            <div class="mini-stat-icon float-right">
+              <i class="mdi mdi-briefcase-check bg-success text-white"></i>
+            </div>
+            <div>
+              <h5 class="font-16">Loại khảo sát</h5>
+            </div>
+            <h3 class="mt-4">{{model.category}}</h3>
+            <p class="text-muted mt-2 mb-0"><a routerLink="/admin/category">Chi tiết</a><span
+                class="float-right"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- START ROW -->
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="card m-b-30">
+          <div class="card-body">
+            <h4 class="mt-0 header-title mb-4">Bài viết mới</h4>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th style="width:3%">STT</th>
+                    <th style="width:12%">Ảnh</th>
+                    <th style="width:20%">Tên</th>
+                    <th style="width:15%">Chuyên mục</th>
+                    <th style="width:40%">Mô tả</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of blogs; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td><img height="50px" [src]="baseUrl + item.Image" alt=""></td>
+                    <td>{{item.Name}}</td>
+                    <td>{{item.CategoryName}}</td>
+                    <td>{{item.Description}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- END ROW -->
+  </div>
+  <!-- container-fluid -->
+</div>

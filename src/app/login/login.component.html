@@ -1,0 +1,62 @@
+<!-- Begin page -->
+<div class="accountbg"></div>
+<div class="wrapper-page">
+  <div class="card card-pages shadow-none">
+
+    <div class="card-body">
+      <form class="form-horizontal m-t-30" [formGroup]="formLogin" (ngSubmit)="onLogin()">
+        <div class="form-group">
+          <div class="col-12">
+            <label>Tài khoản</label>
+            <input class="form-control" type="text" name="username" formControlName="username" placeholder="Tài khoản">
+          </div>
+          <div class="col-12" style="color: red;"
+            *ngIf="formLogin.controls.username?.errors?.required && formLogin.controls.username?.touched">
+            Tài khoản không được để trống!
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-12">
+            <label>Password</label>
+            <input class="form-control" type="password" name="userpassword" formControlName="password"
+              placeholder="Mật khẩu">
+          </div>
+          <div class="col-12" style="color: red;"
+            *ngIf="formLogin.controls.password?.errors?.required && formLogin.controls.password?.touched">
+            Mật khẩu không được để trống!
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-12">
+            <div class="checkbox checkbox-primary">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1"> Remember me</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group text-center m-t-20">
+          <div class="col-12">
+            <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Log In</button>
+          </div>
+        </div>
+
+        <div class="form-group row m-t-30 m-b-0">
+          <div class="col-sm-5 text-right">
+            <a routerLink="/register" class="text-muted">Create an account</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+<!-- END wrapper -->
+<ngx-spinner bdColor="rgba(51,51,51,0.8)">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<p-toast position="top-right"></p-toast>

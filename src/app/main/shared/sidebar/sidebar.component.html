@@ -1,0 +1,42 @@
+<div class="left side-menu">
+  <div class="slimscroll-menu" id="remove-scroll">
+    <!--- Sidemenu -->
+    <div id="sidebar-menu">
+      <!-- Left Menu Start -->
+      <ul class="metismenu" id="side-menu">
+        <li class="menu-title">Quản lý</li>
+        <li *ngIf="authenticationService.RequireLoggedIn()">
+          <a [routerLink]="['/admin/dashboard']" class="waves-effect"><i class="icon-music-repeat"></i><span>
+              Dashboard</span></a>
+        </li>
+        <li *ngIf="authenticationService.RequireLoggedIn()">
+          <a [routerLink]="['/admin/blog-category']" class="waves-effect"><i class="icon-music-repeat"></i><span>
+              Chuyên mục</span></a>
+        </li>
+        <li *ngIf="authenticationService.RequireLoggedIn()">
+          <a [routerLink]="['/admin/blog']" class="waves-effect"><i class="icon-music-repeat"></i><span>
+              Bài viết</span></a>
+        </li>
+        <li *ngIf="authenticationService.RequireLoggedIn()">
+          <a [routerLink]="['/admin/video']" class="waves-effect"><i class="icon-music-repeat"></i><span>
+              Video</span></a>
+        </li>
+        <li *ngIf="authenticationService.RequireAdminOrCustomer()">
+          <a [routerLink]="['/admin/category']" class="waves-effect"><i class="icon-music-repeat"></i><span>
+              Loại khảo sát</span></a>
+        </li>
+        <li *ngIf="authenticationService.RequireAdminOrCustomer()">
+          <a [routerLink]="['/admin/survey']" class="waves-effect"><i class="icon-music-repeat"></i><span> Khảo sát
+            </span></a>
+        </li>
+        <li *ngIf="authenticationService.RequireAdmin()">
+          <a [routerLink]="['/admin/user']" class="waves-effect"><i class="icon-music-repeat"></i><span> Người dùng
+            </span></a>
+        </li>
+      </ul>
+    </div>
+    <!-- Sidebar -->
+    <div class="clearfix"></div>
+  </div>
+  <!-- Sidebar -left -->
+</div>
